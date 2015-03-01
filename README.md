@@ -1,2 +1,3 @@
-# dice2cu.github.io
-Dice to See You - A blog
+# Dice to See You
+
+This is the data for the Dice to See You blog.

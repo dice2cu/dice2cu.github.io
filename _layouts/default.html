@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">  
+    <title>
+      {% if page.title == "Home" %}
+        {{ site.title }} - {{ site.tagline }}
+      {% else %}
+        {{ page.title }} - {{ site.title }}
+      {% endif %}
+    </title>
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="{{ site.baseurl }}public/apple-touch-icon-precomposed.png">
+    <link rel="shortcut icon" href="{{ site.baseurl }}public/favicon.ico">
+    <link rel="stylesheet" href="{{ site.baseurl }}public/css/all.css">
+    <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ site.baseurl }}atom.xml">
+  </head>
+  <body>
+      <header class="masthead">
+        <div class="container">
+          <h1 class="masthead-title">
+            <a href="{{ site.baseurl }}" title="Home">{{ site.title }}</a>
+            <a href="{{ site.baseurl }}" title="Home"><img src="{{ site.baseurl }}public/logo.svg" class="logo" alt="logo"></a>
+            <small>{{ site.tagline }}</small>
+          </h1>
+        </div>
+      </header>
+      <div class="container content">
+        <main>
+          {{ content }}
+        </main>
+        <hr>
+        <footer class="site-footer">
+          <ul>
+            <li><a href="{{ site.baseurl }}about.html">About</a></li>
+            <li>&copy; <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: '%Y' }}</time> All Rights Reserved</li>
+          <ul>
+        </footer>
+    </div>
+  </body>
+</html>

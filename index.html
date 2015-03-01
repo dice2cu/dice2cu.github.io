@@ -1,0 +1,41 @@
+---
+layout: default
+title: Home
+---
+
+<div class="posts">
+  {% for post in paginator.posts %}
+  <article class="post">
+    <h1 class="post-title">
+      <a href="{{ post.url }}">
+        {{ post.title }}
+      </a>
+    </h1>
+    <div class="post-meta">
+      <span class="post-date">
+        <i class="fa fa-calendar"></i>
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }}</time>
+      </span>
+    </div>
+    <p class="post-excerpt">
+      {{ post.excerpt | strip_html }}
+    </p>
+    <div class="post-excerpt-more">
+      <a href="{{ post.url }}">Read More <i class="fa fa-chevron-right"></i></a>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a class="pagination-item older" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"><i class="fa fa-chevron-left"></i> Older</a>
+  {% else %}
+    <span class="pagination-item older"><i class="fa fa-chevron-left"></i> Older</span>
+  {% endif %}
+  {% if paginator.next_page %}
+    <a class="pagination-item newer" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">Newer <i class="fa fa-chevron-right"></i></a>
+  {% else %}
+    <span class="pagination-item newer">Newer <i class="fa fa-chevron-right"></i></span>
+  {% endif %}
+</div>

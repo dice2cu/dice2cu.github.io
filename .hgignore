@@ -1,0 +1,21 @@
+syntax: glob
+
+_site
+
+*.diff
+*.err
+*.orig
+*.log
+*.rej
+*.vi
+*~
+*.swo
+*.swp
+*.zip
+*.lock
+.DS_Store
+Thumbs.db
+.cache
+*.sublime-project
+*.sublime-workspace
+.git

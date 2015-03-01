@@ -1,0 +1,17 @@
+title: Dice to See You
+tagline: A blog
+baseurl: /
+url: http://dice2cu.com
+email: contact@dice2cu.com
+paginate: 5
+timezone: America/Chicago
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+exclude:
+  - README.md
+  - Gemfile
