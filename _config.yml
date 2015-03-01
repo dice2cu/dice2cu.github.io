@@ -5,6 +5,9 @@ url: http://dice2cu.com
 email: contact@dice2cu.com
 paginate: 5
 timezone: America/Chicago
+exclude:
+  - README.md
+  - Gemfile
 defaults:
   -
     scope:
@@ -12,6 +15,3 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-exclude:
-  - README.md
-  - Gemfile
