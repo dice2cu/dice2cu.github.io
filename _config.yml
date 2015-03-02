@@ -5,6 +5,8 @@ url: http://www.dice2cu.com
 email: contact@dice2cu.com
 paginate: 5
 timezone: America/Chicago
+kramdown:
+  input: GFM
 exclude:
   - README.md
   - Gemfile
