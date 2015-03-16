@@ -234,6 +234,11 @@ The app could avoid any bias by randomly selecting the permutation first, and th
 
 I doubt it does all of that now, though.  So it's likely are the above odds are what you can expect to see if you use the companion app to start a new game. 
 
+---
+
+## Alternative Algorithm
+
+I initially ended this post after pointing out some problems in the algorithm.  But I don't feel right about leaving it without looking into how an alternative algorithm could avoid these problems.  So in the unlikely event that you want to read more, you can continue to [part two](/2015/03/15/alchemists-code-alternate-algorithm.html).
 
 
 [1]: http://gserver.czechgames.com/alchemy/
