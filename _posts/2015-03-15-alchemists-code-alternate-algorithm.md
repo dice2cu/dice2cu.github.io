@@ -1,3 +1,6 @@
+---
+---
+
 In the [last post](/2015/03/01/alchemists-code.html), we analyzed the algorithm used by the [Alchemists](http://czechgames.com/en/alchemists/) board game to generate permutations from a four-letter code.  We found some issues with the algorithm but didn't present any solutions.
 
 So I'm revisiting the topic again to propose a sample algorithm that might work better.  I don't know why I'm writing about this, because I doubt anyone really cares.  But sometimes you have to write the things that no one wants to read, you know?
@@ -220,16 +223,16 @@ Using the set of all four-letter codes, we have the following distribution:
 
 ![Chart](/public/images/alchemists_altprobchart.png)
 
-|    | Fern   | Claw   | Mushroom | Flower | Root   | Scorpion | Toad   | Feather |
-| -- | ------ | ------ | -------- | ------ | ------ | -------- | ------ | ------- |
-| R+ | 12.53% | 12.48% | 12.54%   | 12.47% | 12.43% | 12.56%   | 12.52% | 12.47%  |
-| G+ | 12.48% | 12.46% | 12.49%   | 12.54% | 12.51% | 12.47%   | 12.53% | 12.53%  |
-| B+ | 12.52% | 12.56% | 12.58%   | 12.51% | 12.44% | 12.48%   | 12.48% | 12.44%  |
-| R- | 12.53% | 12.49% | 12.42%   | 12.48% | 12.57% | 12.47%   | 12.53% | 12.51%  |
-| G- | 12.53% | 12.45% | 12.55%   | 12.52% | 12.47% | 12.44%   | 12.52% | 12.52%  |
-| B- | 12.46% | 12.59% | 12.51%   | 12.49% | 12.49% | 12.51%   | 12.48% | 12.47%  |
-| ++ | 12.53% | 12.47% | 12.44%   | 12.47% | 12.56% | 12.50%   | 12.51% | 12.52%  |
-| -- | 12.43% | 12.52% | 12.46%   | 12.52% | 12.54% | 12.57%   | 12.42% | 12.54%  |
+|     | Fern   | Claw   | Mushroom | Flower | Root   | Scorpion | Toad   | Feather |
+| --- | ------ | ------ | -------- | ------ | ------ | -------- | ------ | ------- |
+| R+  | 12.53% | 12.48% | 12.54%   | 12.47% | 12.43% | 12.56%   | 12.52% | 12.47%  |
+| G+  | 12.48% | 12.46% | 12.49%   | 12.54% | 12.51% | 12.47%   | 12.53% | 12.53%  |
+| B+  | 12.52% | 12.56% | 12.58%   | 12.51% | 12.44% | 12.48%   | 12.48% | 12.44%  |
+| R-  | 12.53% | 12.49% | 12.42%   | 12.48% | 12.57% | 12.47%   | 12.53% | 12.51%  |
+| G-  | 12.53% | 12.45% | 12.55%   | 12.52% | 12.47% | 12.44%   | 12.52% | 12.52%  |
+| B-  | 12.46% | 12.59% | 12.51%   | 12.49% | 12.49% | 12.51%   | 12.48% | 12.47%  |
+| ++  | 12.53% | 12.47% | 12.44%   | 12.47% | 12.56% | 12.50%   | 12.51% | 12.52%  |
+| --  | 12.43% | 12.52% | 12.46%   | 12.52% | 12.54% | 12.57%   | 12.42% | 12.54%  |
 
 That's pretty close to uniform, and much closer than the [original algorithm](/2015/03/01/alchemists-code.html#permutations).
 
@@ -256,37 +259,37 @@ That is a terrible explanation of what this data is supposed to be, but that sho
 Here's the data used in the chart:
 
 
-|    | Alternate | Original |
-| -- | --------- | -------- |
-|  1 | 6         |          |
-|  2 | 24        |          |
-|  3 | 113       |          |
-|  4 | 307       |          |
-|  5 | 735       | 8448     |
-|  6 | 1509      | 2112     |
-|  7 | 2228      |          |
-|  8 | 3326      |          |
-|  9 | 4165      |          |
-| 10 | 4542      | 17488    |
-| 11 | 4877      |          |
-| 12 | 4450      | 4372     |
-| 13 | 3915      |          |
-| 14 | 3150      |          |
-| 15 | 2436      |          |
-| 16 | 1702      |          |
-| 17 | 1194      |          |
-| 18 | 717       |          |
-| 19 | 435       |          |
-| 20 | 241       | 5920     |
-| 21 | 126       |          |
-| 22 | 66        |          |
-| 23 | 38        |          |
-| 24 | 11        | 1480     |
-| 25 | 5         |          |
-| 26 | 1         |          |
-| 27 | 1         |          |
-| 40 |           | 400      |
-| 48 |           | 100      |
+|     | Alternate | Original |
+| --- | --------- | -------- |
+|   1 | 6         |          |
+|   2 | 24        |          |
+|   3 | 113       |          |
+|   4 | 307       |          |
+|   5 | 735       | 8448     |
+|   6 | 1509      | 2112     |
+|   7 | 2228      |          |
+|   8 | 3326      |          |
+|   9 | 4165      |          |
+|  10 | 4542      | 17488    |
+|  11 | 4877      |          |
+|  12 | 4450      | 4372     |
+|  13 | 3915      |          |
+|  14 | 3150      |          |
+|  15 | 2436      |          |
+|  16 | 1702      |          |
+|  17 | 1194      |          |
+|  18 | 717       |          |
+|  19 | 435       |          |
+|  20 | 241       | 5920     |
+|  21 | 126       |          |
+|  22 | 66        |          |
+|  23 | 38        |          |
+|  24 | 11        | 1480     |
+|  25 | 5         |          |
+|  26 | 1         |          |
+|  27 | 1         |          |
+|  40 |           | 400      |
+|  48 |           | 100      |
 
 
 So this tells us that we do not have a uniform distribution of permutations.  But we do have what appears to be a normal distribution.

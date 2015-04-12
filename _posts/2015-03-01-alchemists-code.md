@@ -1,3 +1,7 @@
+---
+last_modified_date: 2015-04-12
+---
+
 A board game called [Alchemists](http://czechgames.com/en/alchemists/) came out in the US in early 2015.  One of the most interesting things about this game is that it depends on a [companion application][1] to store some secret information as four letter codes.  The game doesn't give us an algorithm for interpreting these codes, so that leaves it up to us to reverse engineer one.
 
 ## Summary
@@ -17,7 +21,10 @@ The first letter of the code tells you the alchemical for the Fern ingredient:
 | G O W      | ![++][8]   |
 | H P X      | ![--][9]   |
 
-The Feather ingredient has about a 35% chance of being either the all plus or all minus alchemical, a 40% chance of being a normal negative alchemical, and less than a 25% of being a normal positive alchemical.
+
+~~The Feather ingredient has about a 35% chance of being either the all plus or all minus alchemical, a 40% chance of being a normal negative alchemical, and less than a 25% of being a normal positive alchemical.~~
+
+Update: the above odds are not correct unless you manually enter your own random code.  If you let the app generate the code for you, then the mappings for all of the ingredients should be equally probable.
 
 There, done.  That's the important stuff.  You can stop reading unless you want to know why.
 
@@ -40,16 +47,16 @@ The game instructions mostly use pictures to refer to the ingredients and alchem
 
 ### Ingredients
 
-| ID | Name      |
-| -- | --------- |
-|  0 | Fern      |
-|  1 | Claw      |
-|  2 | Mushroom  |
-|  3 | Flower    |
-|  4 | Root      |
-|  5 | Scorpion  |
-|  6 | Toad      |
-|  7 | Feather   |
+| ID  | Name      |
+| --- | --------- |
+|   0 | Fern      |
+|   1 | Claw      |
+|   2 | Mushroom  |
+|   3 | Flower    |
+|   4 | Root      |
+|   5 | Scorpion  |
+|   6 | Toad      |
+|   7 | Feather   |
 
 The manual gives a name for every ingredient at some point except the flower.  For our purposes, I'm using the shortest name for each one ("Claw" instead of "Bird Claw", "Root" instead of "Mandrake Root", "Feather" instead of "Raven Feather").
 
@@ -59,16 +66,16 @@ The order of the ingredients is based on the order they appear in the [official 
 
 ### Alchemicals
 
-| ID | Image               | Code |
-| -- | ------------------- | ---- |
-|  0 | ![s_red_plus][2]    | `R+` |
-|  1 | ![s_green_plus][3]  | `G+` |
-|  2 | ![s_blue_plus][4]   | `B+` |
-|  3 | ![s_red_minus][5]   | `R-` |
-|  4 | ![s_green_minus][6] | `G-` |
-|  5 | ![s_blue_minus][7]  | `B-` |
-|  6 | ![u_plus][8]        | `++` |
-|  7 | ![u_minus][9]       | `--` |
+| ID  | Image               | Code |
+| --- | ------------------- | ---- |
+|  0  | ![s_red_plus][2]    | `R+` |
+|  1  | ![s_green_plus][3]  | `G+` |
+|  2  | ![s_blue_plus][4]   | `B+` |
+|  3  | ![s_red_minus][5]   | `R-` |
+|  4  | ![s_green_minus][6] | `G-` |
+|  5  | ![s_blue_minus][7]  | `B-` |
+|  6  | ![u_plus][8]        | `++` |
+|  7  | ![u_minus][9]       | `--` |
 
 Unlike the ingredients, I haven't found any officials names for the alchemicals.  But the image filenames in the [companion app][1] come to our rescue again, giving us some hints about how we can name them:
 
@@ -193,6 +200,8 @@ The algorithm works by building a [factoradic](http://en.wikipedia.org/wiki/Fact
 
 The first ingredient is the Fern, so the only code letter that affects its alchemical mapping is the first one.  That means if you know the first letter of the code, you can calculate the alchemical for the Fern:
 
+| Letter  | Code |
+| ------- | ---- |
 | A I Q Y | `R+` |
 | B J R Z | `G+` |
 | C K S   | `B+` |
@@ -214,6 +223,7 @@ Here's a summary of the results:
 ![Probability Chart](/public/images/alchemists_probchart.png)
 
 |      | Fern  | Claw  | Mushroom | Flower | Root  | Scorpion | Toad  | Feather |
+| ---- | ----- | ----- | -------- | ------ | ----- | -------- | ----- | ------- |
 | `R+` | 15.4% | 13.0% | 13.8%    | 13.3%  | 12.7% | 14.4%    | 11.0% |  6.3%   |
 | `G+` | 15.4% | 13.0% | 13.8%    | 12.2%  | 13.0% | 13.4%    | 11.5% |  7.7%   |
 | `B+` | 11.5% | 13.6% | 13.2%    | 12.3%  | 13.4% | 13.5%    | 12.4% | 10.1%   |
@@ -228,11 +238,13 @@ What does this tell us?  If you take a random code, then there is some bias in w
 
 But the Feather has a weird distribution.  It has low odds of being either `R+` or `G+`, and it has high odds of being `++` or `--`.  This probably has something to do with it being the last ingredient?  It just gets whatever is left after all of the other ingredients have gotten their assignments.
 
-This is only really a problem if you select a code at random.  I don't know for sure how the companion app chooses the code for a new game, but I have to assume that it does randomly generate a code since that would be the easiest method with this algorithm.
+This is only really a problem if you select a code at random.  I don't know for sure how the companion app chooses the code for a new game, ~~but I have to assume that it does randomly generate a code since that would be the easiest method with this algorithm.~~
 
 The app could avoid any bias by randomly selecting the permutation first, and then computing a code from that.  Each permutation will have more than one possible code, so it would probably be best if it then randomly selected from all possible codes for the permutation.
 
-I doubt it does all of that now, though.  So it's likely are the above odds are what you can expect to see if you use the companion app to start a new game. 
+~~I doubt it does all of that now, though.  So it's likely are the above odds are what you can expect to see if you use the companion app to start a new game.~~
+
+Update: I've been informed that the official companion app actually does select a random permutation when starting a new game, and then generates a code from the permutation.  So you should not see these biased probabilities if you generate a new code through the official app.   But you would run into these biased probability problems if you manually entered a random code.
 
 ---
 
