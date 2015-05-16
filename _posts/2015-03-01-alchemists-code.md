@@ -4,6 +4,8 @@ last_modified_date: 2015-04-12
 
 A board game called [Alchemists](http://czechgames.com/en/alchemists/) came out in the US in early 2015.  One of the most interesting things about this game is that it depends on a [companion application][1] to store some secret information as four letter codes.  The game doesn't give us an algorithm for interpreting these codes, so that leaves it up to us to reverse engineer one.
 
+**Update**: the algorithm was changed in April 2015.  See the [new post](/2015/05/16/alchemists-code-update.html) for details.
+
 ## Summary
 
 Before I go into way too much detail on this, let me just summarize the key findings.

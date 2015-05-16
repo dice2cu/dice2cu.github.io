@@ -5,6 +5,8 @@ In the [last post](/2015/03/01/alchemists-code.html), we analyzed the algorithm 
 
 So I'm revisiting the topic again to propose a sample algorithm that might work better.  I don't know why I'm writing about this, because I doubt anyone really cares.  But sometimes you have to write the things that no one wants to read, you know?
 
+**Update**: the algorithm was changed in April 2015.  See the [new post](/2015/05/16/alchemists-code-update.html) for details.
+
 
 ## Problem Definition
 
